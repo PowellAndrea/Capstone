@@ -1,0 +1,14 @@
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\net6.0\StringMaker_Powell.exe
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\net6.0\StringMaker_Powell.deps.json
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\net6.0\StringMaker_Powell.runtimeconfig.json
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\net6.0\StringMaker_Powell.dll
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\net6.0\ref\StringMaker_Powell.dll
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\net6.0\StringMaker_Powell.pdb
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.AssemblyInfoInputs.cache
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.AssemblyInfo.cs
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.csproj.CoreCompileInputs.cache
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.dll
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ref\StringMaker_Powell.dll
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.pdb
+C:\Users\Andrea\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\StringMaker_Powell.genruntimeconfig.cache
