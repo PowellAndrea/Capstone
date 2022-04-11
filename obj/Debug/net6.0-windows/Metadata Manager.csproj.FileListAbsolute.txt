@@ -16,3 +16,5 @@ E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\refint\Metadata Manager
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.pdb
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.genruntimeconfig.cache
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\ref\Metadata Manager.dll
+E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata_Manager.gridPdf.resources
+E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata_Manager.Forms.Menu.Menu.resources

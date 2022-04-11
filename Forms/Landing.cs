@@ -22,13 +22,13 @@ namespace Metadata_Manager.Forms
           if (openPdfFile.ShowDialog() == DialogResult.OK)
          {
 
-            dataGridMain.Rows.Add(openPdfFile.SafeFileName, openPdfFile.FileName, openPdfFile.Title);
 
-            lbl_fileName.Text = openPdfFile.FileName;
-            lbl_FilePath.Text = openPdfFile.SafeFileName;
+            AddRow();
 
-            dataGridMain.Refresh();
+            // if Multi select
+            // Add Row While
 
+            dataGridMain.Rows.Add(openPdfFile.SafeFileName, openPdfFile.FileName);
 
             dataGridMain.Show();
             // Load metdata from files
@@ -40,6 +40,13 @@ namespace Metadata_Manager.Forms
             // Add row to grid
          }
       }
+
+      private void AddRow()
+      {
+
+      }
+
+
 
       private void menuItemExit_Click(object sender, EventArgs e)
       {

@@ -33,13 +33,9 @@
          this.menuItemOpenPdf = new System.Windows.Forms.ToolStripMenuItem();
          this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
          this.openPdfFile = new System.Windows.Forms.OpenFileDialog();
-         this.lbl_fileName = new System.Windows.Forms.Label();
-         this.lbl_FilePath = new System.Windows.Forms.Label();
          this.dataGridMain = new System.Windows.Forms.DataGridView();
          this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.RecordTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.Box1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
          this.menuMain.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dataGridMain)).BeginInit();
          this.SuspendLayout();
@@ -82,25 +78,6 @@
          this.openPdfFile.DefaultExt = "pdf";
          this.openPdfFile.Multiselect = true;
          // 
-         // lbl_fileName
-         // 
-         this.lbl_fileName.AutoSize = true;
-         this.lbl_fileName.Location = new System.Drawing.Point(458, 145);
-         this.lbl_fileName.Name = "lbl_fileName";
-         this.lbl_fileName.Size = new System.Drawing.Size(60, 15);
-         this.lbl_fileName.TabIndex = 2;
-         this.lbl_fileName.Text = "File Name";
-         // 
-         // lbl_FilePath
-         // 
-         this.lbl_FilePath.AutoSize = true;
-         this.lbl_FilePath.Location = new System.Drawing.Point(458, 82);
-         this.lbl_FilePath.Name = "lbl_FilePath";
-         this.lbl_FilePath.Size = new System.Drawing.Size(52, 15);
-         this.lbl_FilePath.TabIndex = 4;
-         this.lbl_FilePath.Text = "File Path";
-         this.lbl_FilePath.Click += new System.EventHandler(this.lbl_FilePath_Click);
-         // 
          // dataGridMain
          // 
          this.dataGridMain.AllowUserToAddRows = false;
@@ -110,9 +87,7 @@
          this.dataGridMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.dataGridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
-            this.RecordTitle,
-            this.FilePath,
-            this.Box1});
+            this.RecordTitle});
          this.dataGridMain.Location = new System.Drawing.Point(12, 45);
          this.dataGridMain.Name = "dataGridMain";
          this.dataGridMain.ReadOnly = true;
@@ -133,26 +108,12 @@
          this.RecordTitle.Name = "RecordTitle";
          this.RecordTitle.ReadOnly = true;
          // 
-         // FilePath
-         // 
-         this.FilePath.HeaderText = "File Path";
-         this.FilePath.Name = "FilePath";
-         this.FilePath.ReadOnly = true;
-         // 
-         // Box1
-         // 
-         this.Box1.HeaderText = "Box1";
-         this.Box1.Name = "Box1";
-         this.Box1.ReadOnly = true;
-         // 
          // Landing
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(800, 450);
          this.Controls.Add(this.dataGridMain);
-         this.Controls.Add(this.lbl_FilePath);
-         this.Controls.Add(this.lbl_fileName);
          this.Controls.Add(this.menuMain);
          this.MainMenuStrip = this.menuMain;
          this.Name = "Landing";
@@ -172,12 +133,8 @@
       private ToolStripMenuItem menuItemOpenPdf;
       private ToolStripMenuItem menuItemExit;
       private OpenFileDialog openPdfFile;
-      private Label lbl_fileName;
-      private Label lbl_FilePath;
       private DataGridView dataGridMain;
       private DataGridViewTextBoxColumn FileName;
       private DataGridViewTextBoxColumn RecordTitle;
-      private DataGridViewTextBoxColumn FilePath;
-      private DataGridViewCheckBoxColumn Box1;
    }
 }
