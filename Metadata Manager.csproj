@@ -10,4 +10,8 @@
     <StartupObject>Metadata_Manager.Program</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

@@ -88,25 +88,31 @@
          this.dataGridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
             this.RecordTitle});
-         this.dataGridMain.Location = new System.Drawing.Point(12, 45);
+         this.dataGridMain.Dock = System.Windows.Forms.DockStyle.Left;
+         this.dataGridMain.Location = new System.Drawing.Point(0, 24);
          this.dataGridMain.Name = "dataGridMain";
          this.dataGridMain.ReadOnly = true;
          this.dataGridMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
          this.dataGridMain.RowTemplate.Height = 25;
-         this.dataGridMain.Size = new System.Drawing.Size(392, 393);
+         this.dataGridMain.Size = new System.Drawing.Size(382, 426);
          this.dataGridMain.TabIndex = 5;
+         this.dataGridMain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMain_CellContentClick_1);
          // 
          // FileName
          // 
+         this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+         this.FileName.Frozen = true;
          this.FileName.HeaderText = "File Name";
          this.FileName.Name = "FileName";
          this.FileName.ReadOnly = true;
+         this.FileName.Width = 85;
          // 
          // RecordTitle
          // 
          this.RecordTitle.HeaderText = "Title";
          this.RecordTitle.Name = "RecordTitle";
          this.RecordTitle.ReadOnly = true;
+         this.RecordTitle.Width = 54;
          // 
          // Landing
          // 

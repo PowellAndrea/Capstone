@@ -1,0 +1,4 @@
+﻿2022-04-11
+	First upload with documentation.  Ability to run window form application, select file from windows openFileDialog, display the file name and path in a dataGridView control, and exit form.
+
+	Enabled multi-select; resize File Name column to fit & freeze full name; clear datagrid before opendialog runs.
