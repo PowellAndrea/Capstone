@@ -21,19 +21,39 @@ namespace Metadata_Manager.Forms
       {
           if (openPdfFile.ShowDialog() == DialogResult.OK)
          {
-            lbl_fileName.Text = openPdfFile.SafeFileName;
-            lbl_FilePath.Text = openPdfFile.FileName;
-            lbl_Title.Text = openPdfFile.Title;
 
-            
+            dataGridMain.Rows.Add(openPdfFile.SafeFileName, openPdfFile.FileName, openPdfFile.Title);
+
+            lbl_fileName.Text = openPdfFile.FileName;
+            lbl_FilePath.Text = openPdfFile.SafeFileName;
+
+            dataGridMain.Refresh();
 
 
+            dataGridMain.Show();
+            // Load metdata from files
+            // File Name
+            // File name with Path
+
+            // Create a record with data
+
+            // Add row to grid
          }
       }
 
       private void menuItemExit_Click(object sender, EventArgs e)
       {
          this.Close();
+      }
+
+      private void dataGridMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      {
+
+      }
+
+      private void lbl_FilePath_Click(object sender, EventArgs e)
+      {
+
       }
    }
 }
