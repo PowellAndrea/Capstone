@@ -4,7 +4,6 @@ E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Metadata Manager.runtim
 E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Metadata Manager.dll
 E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Metadata Manager.pdb
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.csproj.AssemblyReference.cache
-E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata_Manager.Form1.resources
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata_Manager.Forms.Landing.resources
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.csproj.GenerateResource.cache
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.GeneratedMSBuildEditorConfig.editorconfig
@@ -17,3 +16,24 @@ E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.pdb
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.genruntimeconfig.cache
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\ref\Metadata Manager.dll
 E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata_Manager.gridPdf.resources
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.barcodes.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.forms.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.io.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.kernel.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.layout.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.pdfa.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.sign.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.styledxmlparser.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.svg.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\itext.commons.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.DotNet.PlatformAbstractions.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+E:\_SourceCode\Metadata Manager\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+E:\_SourceCode\Metadata Manager\obj\Debug\net6.0-windows\Metadata Manager.csproj.CopyComplete
