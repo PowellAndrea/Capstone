@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Kernel.Pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,8 +25,13 @@ namespace Metadata_Manager.Forms
           if (openPdfFile.ShowDialog() == DialogResult.OK)
          {
             //DataGridViewCheckBoxCell _selected = new DataGridViewCheckBoxCell();
-            string _fileName = new string(" ");
-            string _filePath = new string(" ");
+            // Stick these into an object class
+            string _fileName;
+            string _filePath;
+            string _author;
+            string _title;
+            string _keywords;
+
             int count = 0;
            
             foreach (string Name in openPdfFile.FileNames){
@@ -33,7 +39,17 @@ namespace Metadata_Manager.Forms
                //_selected = new DataGridViewCheckBoxCell();
                _fileName = openPdfFile.SafeFileNames[count];
                _filePath = openPdfFile.FileNames[count];
-               dataGridMain.Rows.Add(_fileName,_filePath);
+
+               // GetPdfMetadata(_filePath);
+               PdfDocument pdfRecord = new PdfDocument(new PdfReader(_filePath));
+               PdfDocumentInfo info = pdfRecord.GetDocumentInfo();
+
+               _author = info.GetAuthor();
+               _title = info.GetTitle();
+               _keywords = info.GetKeywords();
+
+               dataGridMain.Rows.Add(_fileName, _title, _author, _keywords, _filePath);
+
                count++;
             }
 
@@ -42,10 +58,18 @@ namespace Metadata_Manager.Forms
          }
       }
 
+      private void GetPdfMetadata(string filePath)
+      {
+         return;
+      }
+
+      #region Menu Items
       private void menuItemExit_Click(object sender, EventArgs e)
       {
          this.Close();
       }
+
+      #endregion
 
       private void dataGridMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
       {
@@ -53,11 +77,6 @@ namespace Metadata_Manager.Forms
       }
 
       private void lbl_FilePath_Click(object sender, EventArgs e)
-      {
-
-      }
-
-      private void dataGridMain_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
       {
 
       }

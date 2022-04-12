@@ -36,6 +36,9 @@
          this.dataGridMain = new System.Windows.Forms.DataGridView();
          this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.RecordTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.FP_ReferenceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.RecordSeries = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.menuMain.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dataGridMain)).BeginInit();
          this.SuspendLayout();
@@ -87,7 +90,10 @@
          this.dataGridMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.dataGridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
-            this.RecordTitle});
+            this.RecordTitle,
+            this.FP_ReferenceNumber,
+            this.RecordSeries,
+            this.FilePath});
          this.dataGridMain.Dock = System.Windows.Forms.DockStyle.Fill;
          this.dataGridMain.Location = new System.Drawing.Point(0, 24);
          this.dataGridMain.Name = "dataGridMain";
@@ -96,7 +102,6 @@
          this.dataGridMain.RowTemplate.Height = 25;
          this.dataGridMain.Size = new System.Drawing.Size(800, 426);
          this.dataGridMain.TabIndex = 5;
-         this.dataGridMain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMain_CellContentClick_1);
          // 
          // FileName
          // 
@@ -112,7 +117,25 @@
          this.RecordTitle.HeaderText = "Title";
          this.RecordTitle.Name = "RecordTitle";
          this.RecordTitle.ReadOnly = true;
-         this.RecordTitle.Width = 692;
+         // 
+         // FP_ReferenceNumber
+         // 
+         this.FP_ReferenceNumber.HeaderText = "FP Ref. #";
+         this.FP_ReferenceNumber.Name = "FP_ReferenceNumber";
+         this.FP_ReferenceNumber.ReadOnly = true;
+         // 
+         // RecordSeries
+         // 
+         this.RecordSeries.HeaderText = "Record Series";
+         this.RecordSeries.Name = "RecordSeries";
+         this.RecordSeries.ReadOnly = true;
+         // 
+         // FilePath
+         // 
+         this.FilePath.HeaderText = "Path";
+         this.FilePath.Name = "FilePath";
+         this.FilePath.ReadOnly = true;
+         this.FilePath.Width = 692;
          // 
          // Landing
          // 
@@ -142,5 +165,8 @@
       private DataGridView dataGridMain;
       private DataGridViewTextBoxColumn FileName;
       private DataGridViewTextBoxColumn RecordTitle;
+      private DataGridViewTextBoxColumn FP_ReferenceNumber;
+      private DataGridViewTextBoxColumn RecordSeries;
+      private DataGridViewTextBoxColumn FilePath;
    }
 }
