@@ -34,11 +34,14 @@
          this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
          this.openPdfFile = new System.Windows.Forms.OpenFileDialog();
          this.dataGridMain = new System.Windows.Forms.DataGridView();
-         this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.RecordTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.FP_ReferenceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.RecordSeries = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.col_FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.col_RecordTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.YearPublished = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.YearStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.EndYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.col_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.col_RecordSeries = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.col_FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.menuMain.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dataGridMain)).BeginInit();
          this.SuspendLayout();
@@ -89,11 +92,14 @@
          this.dataGridMain.AllowUserToResizeRows = false;
          this.dataGridMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.dataGridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FileName,
-            this.RecordTitle,
-            this.FP_ReferenceNumber,
-            this.RecordSeries,
-            this.FilePath});
+            this.col_FileName,
+            this.col_RecordTitle,
+            this.YearPublished,
+            this.YearStart,
+            this.EndYear,
+            this.col_Author,
+            this.col_RecordSeries,
+            this.col_FilePath});
          this.dataGridMain.Dock = System.Windows.Forms.DockStyle.Fill;
          this.dataGridMain.Location = new System.Drawing.Point(0, 24);
          this.dataGridMain.Name = "dataGridMain";
@@ -103,39 +109,57 @@
          this.dataGridMain.Size = new System.Drawing.Size(800, 426);
          this.dataGridMain.TabIndex = 5;
          // 
-         // FileName
+         // col_FileName
          // 
-         this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-         this.FileName.Frozen = true;
-         this.FileName.HeaderText = "File Name";
-         this.FileName.Name = "FileName";
-         this.FileName.ReadOnly = true;
-         this.FileName.Width = 85;
+         this.col_FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+         this.col_FileName.Frozen = true;
+         this.col_FileName.HeaderText = "File Name";
+         this.col_FileName.Name = "col_FileName";
+         this.col_FileName.ReadOnly = true;
+         this.col_FileName.Width = 85;
          // 
-         // RecordTitle
+         // col_RecordTitle
          // 
-         this.RecordTitle.HeaderText = "Title";
-         this.RecordTitle.Name = "RecordTitle";
-         this.RecordTitle.ReadOnly = true;
+         this.col_RecordTitle.HeaderText = "Title";
+         this.col_RecordTitle.Name = "col_RecordTitle";
+         this.col_RecordTitle.ReadOnly = true;
          // 
-         // FP_ReferenceNumber
+         // YearPublished
          // 
-         this.FP_ReferenceNumber.HeaderText = "FP Ref. #";
-         this.FP_ReferenceNumber.Name = "FP_ReferenceNumber";
-         this.FP_ReferenceNumber.ReadOnly = true;
+         this.YearPublished.HeaderText = "Published";
+         this.YearPublished.Name = "YearPublished";
+         this.YearPublished.ReadOnly = true;
          // 
-         // RecordSeries
+         // YearStart
          // 
-         this.RecordSeries.HeaderText = "Record Series";
-         this.RecordSeries.Name = "RecordSeries";
-         this.RecordSeries.ReadOnly = true;
+         this.YearStart.HeaderText = "from Year";
+         this.YearStart.Name = "YearStart";
+         this.YearStart.ReadOnly = true;
          // 
-         // FilePath
+         // EndYear
          // 
-         this.FilePath.HeaderText = "Path";
-         this.FilePath.Name = "FilePath";
-         this.FilePath.ReadOnly = true;
-         this.FilePath.Width = 692;
+         this.EndYear.HeaderText = "to Year";
+         this.EndYear.Name = "EndYear";
+         this.EndYear.ReadOnly = true;
+         // 
+         // col_Author
+         // 
+         this.col_Author.HeaderText = "Author(s)";
+         this.col_Author.Name = "col_Author";
+         this.col_Author.ReadOnly = true;
+         // 
+         // col_RecordSeries
+         // 
+         this.col_RecordSeries.HeaderText = "Record Series";
+         this.col_RecordSeries.Name = "col_RecordSeries";
+         this.col_RecordSeries.ReadOnly = true;
+         // 
+         // col_FilePath
+         // 
+         this.col_FilePath.HeaderText = "Path";
+         this.col_FilePath.Name = "col_FilePath";
+         this.col_FilePath.ReadOnly = true;
+         this.col_FilePath.Width = 692;
          // 
          // Landing
          // 
@@ -163,10 +187,13 @@
       private ToolStripMenuItem menuItemExit;
       private OpenFileDialog openPdfFile;
       private DataGridView dataGridMain;
-      private DataGridViewTextBoxColumn FileName;
-      private DataGridViewTextBoxColumn RecordTitle;
-      private DataGridViewTextBoxColumn FP_ReferenceNumber;
-      private DataGridViewTextBoxColumn RecordSeries;
-      private DataGridViewTextBoxColumn FilePath;
+      private DataGridViewTextBoxColumn col_FileName;
+      private DataGridViewTextBoxColumn col_RecordTitle;
+      private DataGridViewTextBoxColumn YearPublished;
+      private DataGridViewTextBoxColumn YearStart;
+      private DataGridViewTextBoxColumn EndYear;
+      private DataGridViewTextBoxColumn col_Author;
+      private DataGridViewTextBoxColumn col_RecordSeries;
+      private DataGridViewTextBoxColumn col_FilePath;
    }
 }
