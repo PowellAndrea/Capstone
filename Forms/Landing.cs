@@ -1,4 +1,9 @@
-﻿using iText.Kernel.Pdf;
+﻿/* Andrea Powell, Spring 2022
+ * Capstone project
+ 
+ */
+
+using iText.Kernel.Pdf;
 using iText.Kernel.XMP;
 using System;
 using System.Collections.Generic;
@@ -23,7 +28,7 @@ namespace Metadata_Manager.Forms
       {
          dataGridMain.Rows.Clear();
 
-// Jesse : Use object / class for Record?  I don't think I need to keep the file open & plan to lock and verify prior to writing changes from the grid.
+// Jesse : Use object / class for Record?  keep the file open & plan to lock and verify prior to writing changes from the grid.
 
           if (openPdfFile.ShowDialog() == DialogResult.OK)
          {
@@ -40,24 +45,23 @@ namespace Metadata_Manager.Forms
             string _recordSeries;
             string _filePath;
 
-            PdfDocument _pdfRecord;
-            PdfReader _pdfReader;
+            PdfDocumentInfo info;
 
             //Add : string _keywords;
             // Add: documentID is included instandard PDF.info object
             int count = 0;
-
+            
             #endregion Variables
 
             foreach (string Name in openPdfFile.FileNames){
+               // Only deal with .pdf files from Open Dialog
+
                _fileName = openPdfFile.SafeFileNames[count];
                _filePath = openPdfFile.FileNames[count];
-
-               // GetPdfMetadata(_filePath);
-               PdfDocument pdfRecord = new PdfDocument(new PdfReader(_filePath));
-               PdfDocumentInfo info = pdfRecord.GetDocumentInfo();
-
-               //IDictionary<string, iText.Forms.Fields.PdfFormField> pdfFields = GetPdfFields();
+               PdfDocument PdfRecord = new PdfDocument(new PdfReader(_filePath), new PdfWriter(_fileName));
+               
+               //PdfDocumentInfo info = PdfRecord.GetDocumentInfo();
+               info = PdfRecord.GetDocumentInfo();
 
                _title = info.GetTitle();
                _author = info.GetAuthor();
@@ -65,7 +69,6 @@ namespace Metadata_Manager.Forms
                _yearStart = info.GetMoreInfo("YearStart");
                _yearEnd = info.GetMoreInfo("YearEnd");
                _recordSeries = info.GetMoreInfo("RecordSeries");
-
 
                // File Name | Title | Year Published | Start Year | End Year| Author | Record Series | File Path
                dataGridMain.Rows.Add(_fileName,_title,_yearPublished, _yearStart, _yearEnd, _author, _recordSeries,_filePath);
@@ -79,23 +82,10 @@ namespace Metadata_Manager.Forms
          }
       }
 
-
-      #region Menu Items
       private void menuItemExit_Click(object sender, EventArgs e)
       {
          this.Close();
       }
 
-      #endregion
-
-      private void dataGridMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
-      {
-
-      }
-
-      private void lbl_FilePath_Click(object sender, EventArgs e)
-      {
-
-      }
    }
 }

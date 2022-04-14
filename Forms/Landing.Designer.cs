@@ -82,7 +82,9 @@
          // openPdfFile
          // 
          this.openPdfFile.DefaultExt = "pdf";
+         this.openPdfFile.Filter = "Pdf files | *.pdf";
          this.openPdfFile.Multiselect = true;
+         this.openPdfFile.Title = "Open Files";
          // 
          // dataGridMain
          // 
@@ -101,9 +103,9 @@
             this.col_RecordSeries,
             this.col_FilePath});
          this.dataGridMain.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.dataGridMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
          this.dataGridMain.Location = new System.Drawing.Point(0, 24);
          this.dataGridMain.Name = "dataGridMain";
-         this.dataGridMain.ReadOnly = true;
          this.dataGridMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
          this.dataGridMain.RowTemplate.Height = 25;
          this.dataGridMain.Size = new System.Drawing.Size(800, 426);
@@ -122,37 +124,31 @@
          // 
          this.col_RecordTitle.HeaderText = "Title";
          this.col_RecordTitle.Name = "col_RecordTitle";
-         this.col_RecordTitle.ReadOnly = true;
          // 
          // YearPublished
          // 
          this.YearPublished.HeaderText = "Published";
          this.YearPublished.Name = "YearPublished";
-         this.YearPublished.ReadOnly = true;
          // 
          // YearStart
          // 
          this.YearStart.HeaderText = "from Year";
          this.YearStart.Name = "YearStart";
-         this.YearStart.ReadOnly = true;
          // 
          // EndYear
          // 
          this.EndYear.HeaderText = "to Year";
          this.EndYear.Name = "EndYear";
-         this.EndYear.ReadOnly = true;
          // 
          // col_Author
          // 
          this.col_Author.HeaderText = "Author(s)";
          this.col_Author.Name = "col_Author";
-         this.col_Author.ReadOnly = true;
          // 
          // col_RecordSeries
          // 
          this.col_RecordSeries.HeaderText = "Record Series";
          this.col_RecordSeries.Name = "col_RecordSeries";
-         this.col_RecordSeries.ReadOnly = true;
          // 
          // col_FilePath
          // 
