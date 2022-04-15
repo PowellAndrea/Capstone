@@ -5,6 +5,7 @@
 
 using iText.Kernel.Pdf;
 using iText.Kernel.XMP;
+using iTextSharp.text.xml.xmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,12 +57,19 @@ namespace Metadata_Manager.Forms
             foreach (string Name in openPdfFile.FileNames){
                // Only deal with .pdf files from Open Dialog
 
+               // Move headers to buildTable function
+
                _fileName = openPdfFile.SafeFileNames[count];
                _filePath = openPdfFile.FileNames[count];
+               
                PdfDocument PdfRecord = new PdfDocument(new PdfReader(_filePath), new PdfWriter(_fileName));
                
                //PdfDocumentInfo info = PdfRecord.GetDocumentInfo();
                info = PdfRecord.GetDocumentInfo();
+
+               info.SetMoreInfo("YearPublished", "1492");
+
+
 
                _title = info.GetTitle();
                _author = info.GetAuthor();
@@ -74,6 +82,8 @@ namespace Metadata_Manager.Forms
                dataGridMain.Rows.Add(_fileName,_title,_yearPublished, _yearStart, _yearEnd, _author, _recordSeries,_filePath);
 
                count++;
+
+               //PdfRecord.Close();
             }  
             // end foreach loop on Names from Open File Dialog
 
