@@ -38,7 +38,7 @@
          this.col_RecordTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.YearPublished = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.YearStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.EndYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.YearEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.col_Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.col_RecordSeries = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.col_FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +98,7 @@
             this.col_RecordTitle,
             this.YearPublished,
             this.YearStart,
-            this.EndYear,
+            this.YearEnd,
             this.col_Author,
             this.col_RecordSeries,
             this.col_FilePath});
@@ -110,6 +110,7 @@
          this.dataGridMain.RowTemplate.Height = 25;
          this.dataGridMain.Size = new System.Drawing.Size(800, 426);
          this.dataGridMain.TabIndex = 5;
+         this.dataGridMain.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridMain_RowValidating);
          // 
          // col_FileName
          // 
@@ -135,13 +136,15 @@
          this.YearStart.HeaderText = "from Year";
          this.YearStart.Name = "YearStart";
          // 
-         // EndYear
+         // YearEnd
          // 
-         this.EndYear.HeaderText = "to Year";
-         this.EndYear.Name = "EndYear";
+         this.YearEnd.DataPropertyName = "YearEnd";
+         this.YearEnd.HeaderText = "to Year";
+         this.YearEnd.Name = "YearEnd";
          // 
          // col_Author
          // 
+         this.col_Author.DataPropertyName = "Author";
          this.col_Author.HeaderText = "Author(s)";
          this.col_Author.Name = "col_Author";
          // 
@@ -187,7 +190,7 @@
       private DataGridViewTextBoxColumn col_RecordTitle;
       private DataGridViewTextBoxColumn YearPublished;
       private DataGridViewTextBoxColumn YearStart;
-      private DataGridViewTextBoxColumn EndYear;
+      private DataGridViewTextBoxColumn YearEnd;
       private DataGridViewTextBoxColumn col_Author;
       private DataGridViewTextBoxColumn col_RecordSeries;
       private DataGridViewTextBoxColumn col_FilePath;

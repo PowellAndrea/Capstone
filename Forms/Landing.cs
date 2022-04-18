@@ -5,7 +5,6 @@
 
 using iText.Kernel.Pdf;
 using iText.Kernel.XMP;
-using iTextSharp.text.xml.xmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,10 +66,6 @@ namespace Metadata_Manager.Forms
                //PdfDocumentInfo info = PdfRecord.GetDocumentInfo();
                info = PdfRecord.GetDocumentInfo();
 
-               info.SetMoreInfo("YearPublished", "1492");
-
-
-
                _title = info.GetTitle();
                _author = info.GetAuthor();
                _yearPublished = info.GetMoreInfo("YearPublished");
@@ -83,7 +78,7 @@ namespace Metadata_Manager.Forms
 
                count++;
 
-               //PdfRecord.Close();
+               PdfRecord.Close();
             }  
             // end foreach loop on Names from Open File Dialog
 
@@ -97,5 +92,35 @@ namespace Metadata_Manager.Forms
          this.Close();
       }
 
+      private void dataGridMain_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+      {
+         string filePath = dataGridMain.CurrentRow.Cells[7].Value.ToString();
+
+         // Open source document
+         PdfDocument sourceDoc = new PdfDocument(new PdfReader(filePath));
+
+         // Create new empty destination document
+         PdfDocument destDoc = new PdfDocument(new PdfWriter("./TestMe.pdf"));
+         sourceDoc.CopyPagesTo(1,3,destDoc);
+
+         var ab = sourceDoc.GetCatalog();
+         var abc = sourceDoc.GetXmpMetadata();
+
+         XMPMeta myMeta = XMPMetaFactory.Create();
+         myMeta.SetProperty("http://ns.adobe.com/pdfx/1.3/", "Author", "myApp");
+
+         var one = destDoc.GetDocumentInfo();
+         var two = destDoc.GetXmpMetadata();
+
+         //destDoc.SetXmpMetadata(myMeta);
+         destDoc.SetXmpMetadata(XMPMetaFactory.Create());
+
+         var three = destDoc.GetXmpMetadata();
+         var four = destDoc.GetCatalog();
+
+         destDoc.Close();
+
+
+      }
    }
 }
