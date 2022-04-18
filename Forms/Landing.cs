@@ -103,20 +103,25 @@ namespace Metadata_Manager.Forms
          PdfDocument destDoc = new PdfDocument(new PdfWriter("./TestMe.pdf"));
          sourceDoc.CopyPagesTo(1,3,destDoc);
 
-         var ab = sourceDoc.GetCatalog();
-         var abc = sourceDoc.GetXmpMetadata();
+         var bc = sourceDoc.GetDocumentInfo().GetMoreInfo("Title");
+         var ab = sourceDoc.GetDocumentInfo().GetMoreInfo("YearStart");  // This is populating a custom xmp property
 
-         XMPMeta myMeta = XMPMetaFactory.Create();
-         myMeta.SetProperty("http://ns.adobe.com/pdfx/1.3/", "Author", "myApp");
+         PdfDocumentInfo info = destDoc.GetDocumentInfo();
+         info.SetMoreInfo("Title", "my App");
+         info.SetAuthor("something else");
 
-         var one = destDoc.GetDocumentInfo();
-         var two = destDoc.GetXmpMetadata();
+         var abc = info.GetMoreInfo("Title");
 
-         //destDoc.SetXmpMetadata(myMeta);
-         destDoc.SetXmpMetadata(XMPMetaFactory.Create());
+
+         //XMPMeta myMeta = XMPMetaFactory.Create();
+         //myMeta.SetProperty("http://ns.adobe.com/pdfx/1.3/", "Author", "myApp");
+
+         //var one = destDoc.GetDocumentInfo();
+         //var two = destDoc.GetXmpMetadata();
+
+         //destDoc.SetXmpMetadata(XMPMetaFactory.Create());
 
          var three = destDoc.GetXmpMetadata();
-         var four = destDoc.GetCatalog();
 
          destDoc.Close();
 
