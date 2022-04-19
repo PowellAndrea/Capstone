@@ -45,6 +45,7 @@ namespace Metadata_Manager.Forms
             string _recordSeries;
             string _filePath;
 
+            PdfDocument PdfRecord;
             PdfDocumentInfo info;
 
             //Add : string _keywords;
@@ -61,7 +62,7 @@ namespace Metadata_Manager.Forms
                _fileName = openPdfFile.SafeFileNames[count];
                _filePath = openPdfFile.FileNames[count];
                
-               PdfDocument PdfRecord = new PdfDocument(new PdfReader(_filePath), new PdfWriter(_fileName));
+               PdfRecord = new PdfDocument(new PdfReader(_filePath), new PdfWriter(_fileName));
                
                //PdfDocumentInfo info = PdfRecord.GetDocumentInfo();
                info = PdfRecord.GetDocumentInfo();
@@ -77,13 +78,16 @@ namespace Metadata_Manager.Forms
                dataGridMain.Rows.Add(_fileName,_title,_yearPublished, _yearStart, _yearEnd, _author, _recordSeries,_filePath);
 
                count++;
-
                PdfRecord.Close();
             }  
             // end foreach loop on Names from Open File Dialog
 
+
+
             dataGridMain.Refresh();
             dataGridMain.Show();
+
+
          }
       }
 
@@ -100,7 +104,7 @@ namespace Metadata_Manager.Forms
          PdfDocument sourceDoc = new PdfDocument(new PdfReader(filePath));
 
          // Create new empty destination document
-         PdfDocument destDoc = new PdfDocument(new PdfWriter("./TestMe.pdf"));
+         PdfDocument destDoc = new PdfDocument(new PdfWriter("./TEST/TestMe.pdf"));
          sourceDoc.CopyPagesTo(1,3,destDoc);
 
          var bc = sourceDoc.GetDocumentInfo().GetMoreInfo("Title");

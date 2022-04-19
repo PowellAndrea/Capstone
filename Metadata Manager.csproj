@@ -11,10 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="itext7" Version="7.2.2" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
   </ItemGroup>
