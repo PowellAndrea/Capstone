@@ -1,4 +1,20 @@
-﻿using System;
+﻿#region Comments
+/*
+ * Andrea Powell 
+ * Centralia College Capstone Project
+ * Record Class
+ * 
+ * 
+ *    should I create a new class pdfRecord : Record and add the PdfDocument and PdfDocumentInfo objects to that class?
+ *    
+ *    Look at public strings - use private with getters/setters?
+ *    Add Cutoff Date to retention metadata, 
+ *       is there an XMP template targeted to archivists?  
+ *       Maybe the Library of Congress
+ */
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,57 +24,52 @@ namespace Metadata_Manager
 {
    public class Record
    {
-      #region Properties
-      // Standard metdata fields
-      public string Title { get => Title; set => Title = value; }
-      public string Format { get => Format; set => Format = value; }    // example:  "pdf", "paper"
+      #region Class Properties
+      // issues with internal and private strings - get/set revisit later
 
-      // Move these to child class = digital record
-      public string FileName { get => FileName; set => FileName = value; }
-      public string FilePath { get => FilePath; set => FilePath = value; }
-      public string FileSize { get => FileSize; set => FileSize = value; }
+      /// Record object uuid
+      internal Guid FileId;
+      /// PDF Internal version ID  xmpMM:InstanceID
+      public string PdfInstanceId;
 
+      public string FilePath;
+      public string FileName;
+      public string FileSize;  // System managed
 
-      // Retention properties based on SOS Record Retention Schedules.
-      public string RecordDescription { get => RecordDescription; set => RecordDescription = value; }
-      public string YearStart { get => YearStart; set => YearStart = value; }
-      public string YearEnd { get => YearEnd; set => YearEnd = value; }
-      public string YearPublished { get => YearPublished; set => YearPublished = value; }
+      /// Dublin Core 1.1 Namespace (DCMI)
+      /// https://developer.adobe.com/xmp/docs/XMPNamespaces/dc/
+      public string Title;       //dc:title
+      public string Author;      //dc:creator
+      public string Description; //dc:description
 
+      /// Pdfx 1.3 namespace - Custom Metdata
+      public string RecordSeries;   //pdfx:RecordSeries
+      public string YearStart;      //pdfx:YearStart  - change this to use DCMI span?
+      public string YearEnd;        //pdfx:YearEnd
+      public string Published;      //pdfx:Published - change this to use DCMI
 
-      // Fix these to reference "RecordSeries" types
-      public string RecordSeries { get => RecordSeries; set => RecordSeries = value; }
-      //public string RecordDAN { get => RecordDAN; set => RecordDAN = value; }
-         // DAN = Diposition Authority Number
+      /// XMP Rights Management namespace --  //xmpRights:Marked = False  for Public Records
+      public string CopyrightNotice;      //xmpRights:Marked = False
 
-
-      // Authors should ultimately be stored as an array of Author objects in an XMP template
-      public string Author { get => Author; set => Author = value; }
-      #endregion Properties
-
-      public Record(string format)
-      {
-         Format = format;
-      }
+      #endregion
 
       public Record()
       {
-      //   this.FileName = string.Empty;
-      //   this.FilePath = string.Empty;
-      //   this.Author = string.Empty;
-      //   this.FileSize = string.Empty;
+         FileId = new Guid();
+         //PdfInstanceId = string.Empty; // PDF Internal version ID - needs review  xmpMM:InstanceID
+         FilePath = string.Empty;
+         FileName = string.Empty;
+         FileSize = string.Empty;  // System managed
 
-      //   this.Title = string.Empty;
-      //   this.RecordDescription = string.Empty;
-      //   this.RecordSeries = string.Empty;
-      //   //this.RecordDAN = string.Empty ;
-      //   this.YearPublished = string.Empty ;
-      //   this.YearStart = string.Empty ;
-      //   this.YearEnd = string.Empty ;
+         // Dublin Core 1.1 Namespace
+         Title = string.Empty;      //dc:title
+         Author = string.Empty;      //dc:creator
+         Description = string.Empty;   //dc:description
+         YearStart = string.Empty;     //pdfx:YearStart
+         YearEnd = string.Empty;       //pdfx:YearEnd
+         Published = string.Empty;     //pdfx:Published - change this to use DCMI
+         RecordSeries = string.Empty;  //pdfx:RecordSeries
+
       }
-
-
    }
-
-
 }
