@@ -7,9 +7,14 @@
  *    Think about pdfDocumentID and pdfInstanceID.  Do I want to search for other instances of the same document?  
  *    Is the new destiation document a different documentID?
  * 
+ * Define here or in class?  Will be null until the new pdfDocument object is instanciated. 
+ *    PdfWriter destinationWriter;
+ *    PdfReader sourceReader;
+ * 
  *    Look at itext7 GetXmpMetadata(bool createNew)
  *    
  *    Set font if dirty & update when written
+ *    Don't update again on exit unless there are changes
  *    Where is my pencil for editing?
  *    Grey out read-only fields
  */
@@ -46,19 +51,11 @@ namespace Metadata_Manager.Forms
 
           if (openPdfFile.ShowDialog() == DialogResult.OK)
           {
-            #region Variables
-
             Record = new Record();
             int count = 0;
 
-            // Define here or in class?  Will be null until the new pdfDocument object is instanciated. 
-            //PdfWriter destinationWriter;
-            //PdfReader sourceReader;
-
-            #endregion Variables
-
-            // Only dealing with filtered .pdf files from Open Dialog
             foreach (string File in openPdfFile.FileNames){
+               // Open Dialog filters out non-PDF files
                
                Record.FilePath = openPdfFile.FileNames[count];
                Record.FileName = openPdfFile.SafeFileNames[count];
@@ -81,7 +78,6 @@ namespace Metadata_Manager.Forms
                count++;
                sourceDocument.Close();
             }  
-            // end foreach loop on Names from Open File Dialog, then refresh dataGridMain
 
             dataGridMain.Refresh();
             dataGridMain.Show();
@@ -93,24 +89,23 @@ namespace Metadata_Manager.Forms
          // Need to add verification step to make sure all changes have been saved.
          Close();
       }
-      
-      private void dataGridMain_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+
       // May want to call a Record.Validating function in class instead.
       // This is firing again when the program is closed - fix the event triggers
-
+      private void dataGridMain_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
       {
          PdfDocument sourceDocument;
          PdfDocument targetDocument;
-         PdfDocumentInfo sourceInfo;
+         //PdfDocumentInfo sourceInfo;
          PdfDocumentInfo targetInfo;
          
-         //Jesse:  PdfDocumentInfo sourceInfo;  // Added inline, would it be faster to create sourceInfo rather than calling sourceDocument.GetDocumentInfo().GetMoreInfo("Title")
          Record = new Record();
 
          // Locate file to change and reopen for writing
          Record.FileName = dataGridMain.CurrentRow.Cells[0].Value.ToString();
          Record.FilePath = dataGridMain.CurrentRow.Cells[7].Value.ToString();
-
+         
+         sourceDocument = new PdfDocument(new PdfReader(Record.FilePath));
 
          // need for/each cell changed - currently updating anything changed or not.  Try validating as the cell is exited as well
          // Open source document -- beware the instanceID, it changes as soon as anything in the source is changed; DocumentID is unique to each pdf
@@ -119,64 +114,46 @@ namespace Metadata_Manager.Forms
          // currently creating duplicate documents - should I just update the current document (which does change the instance ID - probably need to look at version ID at that point too.
          // Try a single myDocument(Reader = Source; Writer = Target)
 
-         sourceDocument = new PdfDocument(new PdfReader(Record.FilePath));
-         sourceInfo = sourceDocument.GetDocumentInfo();
-
          targetDocument = new PdfDocument(new PdfWriter("./Test" + Record.FileName + ".pdf"));
          sourceDocument.CopyPagesTo(1, sourceDocument.GetNumberOfPages(), targetDocument);
          targetInfo = sourceDocument.GetDocumentInfo();
-         //var a = sourceDocument.GetXmpMetadata();
-         //var b = targetDocument.GetXmpMetadata();
-         //byte[] sourceByte = sourceDocument.GetXmpMetadata();
+      
+         /*
+          * 
+          * The below line works - will use this when updating to use XMP object rather than GetInfo[array].
+          *    byte[] targetByte = sourceDocument.GetXmpMetadata();
+          *    
+          */
 
-         byte[] targetByte = sourceDocument.GetXmpMetadata();
 
-
-         // Get Existing Standard PDF Document Metadat
-         //sourceInfo = sourceDocument.GetDocumentInfo();
-         //Record.Title  = sourceDocument.GetDocumentInfo().GetTitle();
-         //Record.Author = sourceDocument.GetDocumentInfo().GetAuthor();
-
+         // Get Changes from dataGrid and load new Record object
          // File Name | Title | Year Published | Start Year | End Year| Author | Record Series | File Path
          //  aggh ... the pain
-         Record.Title = dataGridMain.CurrentRow.Cells[1].Value.ToString();
-         Record.Published = dataGridMain.CurrentRow.Cells[2].Value.ToString();
-         Record.YearStart = dataGridMain.CurrentRow.Cells[3].Value.ToString();
-         Record.YearEnd = dataGridMain.CurrentRow.Cells[4].Value.ToString();
-         Record.Author = dataGridMain.CurrentRow.Cells[5].Value.ToString();
+// Crashing when field is null - need to create if it does not exist
+         Record.Title      = dataGridMain.CurrentRow.Cells[1].Value.ToString();
+         Record.Published  = dataGridMain.CurrentRow.Cells[2].Value.ToString();
+         Record.YearStart  = dataGridMain.CurrentRow.Cells[3].Value.ToString();  
+         Record.YearEnd    = dataGridMain.CurrentRow.Cells[4].Value.ToString();
+         Record.Author     = dataGridMain.CurrentRow.Cells[5].Value.ToString();
          Record.RecordSeries = dataGridMain.CurrentRow.Cells[6].Value.ToString();
 
+         targetDocument.GetDocumentInfo().SetTitle(Record.Title + " standard");
+         targetInfo.SetAuthor(Record.Author + "standard");
+         
+         // Dublin Core namespace
+         targetDocument.GetDocumentInfo().SetAuthor(Record.Author);  // dc:creator
+         targetDocument.GetDocumentInfo().SetTitle(Record.Title);    //dc:title
 
-
-         //// Get Metadata From Other Namespaces
-         //// Need to check the properties and create them if they do not exist.
-         //Record.Title = sourceDocument.GetDocumentInfo().GetMoreInfo("Title");   //in both DC & PDF namespaces, are these duplicate or different?
-         //Record.YearStart = sourceDocument.GetDocumentInfo().GetMoreInfo("YearStart");
-         //Record.YearStart = sourceDocument.GetDocumentInfo().GetMoreInfo("YearEnd");
-         //Record.RecordSeries = sourceDocument.GetDocumentInfo().GetMoreInfo("RecordSeries");
-         //Record.YearEnd = sourceDocument.GetDocumentInfo().GetMoreInfo("Published");
-         //Record.Published = sourceDocument.GetDocumentInfo().GetMoreInfo("Description");
-         //// Record.CopyrightNotice = sourceDocument.GetDocumentInfo().GetMoreInfo("CopyrightNotice");
-
-         // Send record for validation before writing  if / exists, etc.
-         //targetInfo.SetTitle(Record.Title);     // does this duplicate the dc:title;
-         targetInfo.SetAuthor(Record.Author);
-         targetDocument.GetDocumentInfo().SetAuthor(Record.Author);
-         targetDocument.GetDocumentInfo().SetTitle(Record.Title);
-
+         //  Adobe pdfx namespace
          targetDocument.GetDocumentInfo().SetMoreInfo("YearStart", Record.YearStart);
-
-        // targetInfo.SetMoreInfo("Title", Record.YearEnd);   // Does this duplicate the pdfx:title and the dc:title?
-         targetInfo.SetMoreInfo("YearStart", Record.YearStart);
-         targetInfo.SetMoreInfo("YearEnd", Record.YearEnd);
-         targetInfo.SetMoreInfo("RecordSeries", Record.RecordSeries);
-         targetInfo.SetMoreInfo("Published", Record.Published);
-         targetInfo.SetMoreInfo("Description", Record.Description);
-         // targetInfo.SetMoreInfo("CopyrightNotice", "not marked");
-
+         targetDocument.GetDocumentInfo().SetMoreInfo("YearEnd", Record.YearEnd);
+         targetDocument.GetDocumentInfo().SetMoreInfo("RecordSeries", Record.RecordSeries);
+         targetDocument.GetDocumentInfo().SetMoreInfo("Published", Record.Published);
+         //targetDocument.GetDocumentInfo().SetMoreInfo("Description", Record.Description);
 
          targetDocument.Close();
          sourceDocument.Close();
+         dataGridMain.Refresh();          
       }
    }
 }
